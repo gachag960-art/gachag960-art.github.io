@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>basscube1</title>
+<meta name="description" content="Claude Code を八本、係として同時に動かす仕組みと、作り手の言葉を会話の圧縮を越えて残す記憶の道具。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="handle">basscube1</div>
+    <nav class="links">
+      <a href="https://github.com/gachag960-art">GitHub</a>
+      <a href="#" class="placeholder">LinkedIn（仮）</a>
+      <a href="en.html" lang="en">English</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="kicker">立命館大学 理工学部 ロボティクス学科</p>
+    <h1>Claude Code を八本、<span class="keep">係として同時に動かしています。</span></h1>
+    <p class="lead">一人でゲームと会話アプリを作るために、Claude Code のセッションを分野ごとの係に分けました。総指揮の一本が仕事を割り振って監査し、係は終えるたびにコミットと報告を残します。会話が圧縮されると Claude は前に決めた事を落とすので、私の言葉を生の会話記録から引き直す記憶の道具も自分で書きました。</p>
+    <div class="stats">
+      <div class="stat"><div class="num">8<small>本</small></div><div class="label">同時に置いているセッション（総指揮 1、係 7）</div></div>
+      <div class="stat"><div class="num">1,243<small>件</small></div><div class="label">決定台帳の記録（私の裁定、係の報告、総指揮の決め。8 月 5 日から）</div></div>
+      <div class="stat"><div class="num">573<small>通</small></div><div class="label">係が掲示板へ流した報告（9 月 26 日から）</div></div>
+      <div class="stat"><div class="num">4.2<small>GB</small></div><div class="label">記憶の道具が引く生の会話記録（175 本）</div></div>
+    </div>
+    <p class="asof">数は 2026 年 10 月 14 日にリポジトリと記録のファイルから数えた値です。</p>
+  </div>
+
+  <section id="fleet">
+    <h2>仕組み</h2>
+    <p class="sub">総指揮は実作業をしません。手を空けておき、割り振りと監査と記録だけをします。</p>
+
+    <div class="fleet">
+      <div class="row-top">
+        <div class="node author"><b>私（作り手）</b><span>依頼と裁定を出す。登録、公開、送信は自分の手でする</span></div>
+        <div class="arrow">依頼 →<br>← 報告</div>
+        <div class="node cmd"><b>総指揮のセッション</b><span>係へ伝言で仕事を渡す。係の試験を再実行して監査する。決定台帳、CLAUDE.md、記憶のファイルを書くのは総指揮だけ</span></div>
+      </div>
+      <p class="flow-label">↓ 伝言で依頼　↑ 伝言で報告</p>
+      <div class="crew">
+        <div class="node"><b>会話アプリ</b><span>Node.js のアプリの実装</span></div>
+        <div class="node"><b>シナリオ</b><span>会話のキャラクターと場面</span></div>
+        <div class="node"><b>ゲーム</b><span>ゲームの設計文書</span></div>
+        <div class="node"><b>画像</b><span>生成、切り抜き、素材</span></div>
+        <div class="node"><b>調査</b><span>ウェブと手元の資料</span></div>
+        <div class="node"><b>新作の設計</b><span>次の作品の筋と人物</span></div>
+        <div class="node"><b>サイト</b><span>このページと応募の文</span></div>
+      </div>
+      <p class="flow-label">↓ 係が仕事を一つ終えるたびに残すもの</p>
+      <div class="sinks">
+        <div class="node"><b>git のコミット</b><span>件名一行。会話アプリの相棒がこの件名を読み、私の作業を話題にする</span></div>
+        <div class="node"><b>掲示板の見出し</b><span>Discord へ一行。外へ出してよい事だけ</span></div>
+        <div class="node"><b>決定台帳</b><span>私の裁定、係の報告、総指揮の決めを一行ずつ、日付つきで</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2>どの決まりにも、破った日がある</h2>
+    <p class="sub">決まりは先に考えて作った物ではありません。Claude が実際に失敗した日に、その失敗を止める一行を足してきました。</p>
+    <table class="rules">
+      <thead><tr><th>日付</th><th>起きた事</th><th>足した決まり</th></tr></thead>
+      <tbody>
+        <tr><td class="date">08-05</td><td>会話が圧縮された後、作業の手順書を一度も呼ばずに作業を続けた。圧縮の後に自動で読まれるのは CLAUDE.md と記憶の索引だけだった</td><td class="fix" data-label="足した決まり">CLAUDE.md の冒頭に、着手前に必ず呼ぶ物の表を置いた</td></tr>
+        <tr><td class="date">08-05</td><td>私が実験の結果を報告しただけなのに、次の工程の材料を作り、課題の打ち切りまで台帳へ書いた</td><td class="fix" data-label="足した決まり">判断の材料を増やすのが Claude、判断するのは私。推奨は書いてよいが、実行はしない</td></tr>
+        <tr><td class="date">08-06</td><td>画像の不具合を一つ見るたびにプロンプトを二、三か所変え、何が効いたのか分からなくなった</td><td class="fix" data-label="足した決まり">実験では一度に一か所だけ変え、変更前の基準を必ず並べる</td></tr>
+        <tr><td class="date">09-26</td><td>私が席を外している間、係の報告が総指揮へ届かなかった。伝言は、私の書き込みが無い間は一本から 10 回までで、越えた分は黙って消えていた</td><td class="fix" data-label="足した決まり">途中経過は伝言で送らない。長い報告はファイルに置き、伝言は結論と場所の一通にする</td></tr>
+        <tr><td class="date">09-29</td><td>係の返事が総指揮の口調に崩れた。全部の係が読む CLAUDE.md の口調の決まりを、自分の物と取り違えたらしい</td><td class="fix" data-label="足した決まり">入口のフックが、届いた一文ごとに係自身の口調を一行添える</td></tr>
+        <tr><td class="date">10-11</td><td>会話アプリの相棒が、私の最近の作業を話せなかった。相棒は git の件名を読むが、9 月 16 日から一件もコミットが無かった</td><td class="fix" data-label="足した決まり">係は仕事を一つ終えるたびに件名一行でコミットする。10 月 11 日から 14 日までの 4 日で 296 件になった</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="memory">
+    <h2>圧縮を越える記憶</h2>
+    <p class="sub">台帳も記憶のファイルも、書く時に Claude が一行に縮めています。取りこぼしは決まってその縮めた所で起きました。</p>
+    <p>そこで、縮める前の生の会話記録から、私の発言をその都度引き直す道具を Node.js で書きました。考え方は Just-in-Time Memory の論文（<a href="https://arxiv.org/abs/2609.27334">arXiv 2609.27334</a>）から借りています。私が一文書くたびに、入口のフックが決定台帳の当たりと、過去の私の原文から強く当たる物を二件まで Claude に添えます。一文あたり約 1 秒です。仕事を係へ渡す時は、Haiku に言い換えを作らせて広く集め、合う物を選ばせます。こちらは一回 1 分ほどかかります。</p>
+    <p>効き目は、過去の裁定 12 件を元とは違う言い回しで問い、上位 5 件に私の原文が入るかで測りました。</p>
+    <div class="bars">
+      <div class="bar base"><span class="name">決定台帳の札を当てる（前のやり方）</span><div class="track"><div class="fill" style="width:58.3%"></div></div><span class="v">7/12</span></div>
+      <div class="bar"><span class="name">生の記録を字面で引く</span><div class="track"><div class="fill" style="width:66.7%"></div></div><span class="v">8/12</span></div>
+      <div class="bar"><span class="name">二つを合わせる（今のフック）</span><div class="track"><div class="fill" style="width:83.3%"></div></div><span class="v">10/12</span></div>
+      <div class="bar"><span class="name">Haiku が言い換えて選ぶ</span><div class="track"><div class="fill" style="width:91.7%"></div></div><span class="v">11/12</span></div>
+    </div>
+    <p class="note">12 件は少なく、Haiku の方は毎回言い換えを作り直すので、同じ問いでも当たりが揺れます。外れた 1 件は、私が「制限しなくていい」と言い、問いが「数を絞る」だった物です。</p>
+  </section>
+
+  <section id="about">
+    <h2>私について</h2>
+    <dl class="about">
+      <dt>名前</dt><dd>basscube1</dd>
+      <dt>学校</dt><dd>立命館大学 理工学部 ロボティクス学科 在学（2024 年 4 月入学、2028 年 3 月卒業予定）</dd>
+      <dt>作っている物</dt><dd>個人制作のゲームと会話アプリ。その制作を回すための、上に書いた係の仕組み</dd>
+      <dt>使う物</dt><dd>Claude Code、Node.js、Python、Blender（Python で操作）、画像生成の道具</dd>
+      <dt>連絡</dt><dd><a href="https://github.com/gachag960-art">github.com/gachag960-art</a></dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">basscube1 · 2026</div>
+</footer>
+
+</body>
+</html>

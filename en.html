@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>basscube1</title>
+<meta name="description" content="Running eight Claude Code sessions as a crew, and a memory tool that keeps the author's own words across context compaction.">
+<link rel="stylesheet" href="style.css">
+<style>body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.65; } @media (min-width: 641px) { .bar { grid-template-columns: 17em 1fr 3.5em; } }</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="handle">basscube1</div>
+    <nav class="links">
+      <a href="https://github.com/gachag960-art">GitHub</a>
+      <a href="#" class="placeholder">LinkedIn (TBD)</a>
+      <a href="index.html" lang="ja">日本語</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="kicker">Robotics, College of Science and Engineering, Ritsumeikan University</p>
+    <h1>I run eight Claude Code sessions at once, each with its own job.</h1>
+    <p class="lead">I build a game and a chat app on my own. To do that, I split Claude Code into sessions by area. One commander session assigns work and audits the results; the others commit and report every time they finish a task. Claude drops earlier decisions when a conversation gets compacted, so I also wrote a memory tool that pulls my own words back out of the raw transcripts.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">8</div><div class="label">sessions running side by side (1 commander, 7 crew)</div></div>
+      <div class="stat"><div class="num">1,243</div><div class="label">decision ledger entries: my rulings, crew reports and commander calls (since Aug 5)</div></div>
+      <div class="stat"><div class="num">573</div><div class="label">reports posted by the crew to the board (since Sep 26)</div></div>
+      <div class="stat"><div class="num">4.2<small>GB</small></div><div class="label">raw transcripts the memory tool searches (175 files)</div></div>
+    </div>
+    <p class="asof">Counted from the repository and log files on Oct 14, 2026.</p>
+  </div>
+
+  <section id="fleet">
+    <h2>How it works</h2>
+    <p class="sub">The commander does no hands-on work. It stays free to assign, audit and record.</p>
+
+    <div class="fleet">
+      <div class="row-top">
+        <div class="node author"><b>Me (the author)</b><span>Gives requests and rulings. Signing up, publishing and sending stay in my hands</span></div>
+        <div class="arrow">request →<br>← report</div>
+        <div class="node cmd"><b>Commander session</b><span>Hands work to the crew by cross-session message and re-runs their tests to audit. Only the commander writes the ledger, CLAUDE.md and the memory files</span></div>
+      </div>
+      <p class="flow-label">↓ tasks by message　↑ reports by message</p>
+      <div class="crew">
+        <div class="node"><b>Chat app</b><span>Node.js app code</span></div>
+        <div class="node"><b>Scenario</b><span>Characters and scenes for chat</span></div>
+        <div class="node"><b>Game</b><span>Game design documents</span></div>
+        <div class="node"><b>Images</b><span>Generation, cutouts, assets</span></div>
+        <div class="node"><b>Research</b><span>Web and local sources</span></div>
+        <div class="node"><b>New work</b><span>Plot and cast for the next project</span></div>
+        <div class="node"><b>Site</b><span>This page and the application text</span></div>
+      </div>
+      <p class="flow-label">↓ what each crew session leaves behind per task</p>
+      <div class="sinks">
+        <div class="node"><b>git commit</b><span>One-line subject. The companion in my chat app reads these and brings up what I worked on</span></div>
+        <div class="node"><b>Board headline</b><span>One line to Discord, only what is safe to share</span></div>
+        <div class="node"><b>Decision ledger</b><span>One dated line per ruling, crew report or commander call</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2>Every rule has a date it was broken</h2>
+    <p class="sub">I did not design these rules up front. Each one was added on the day Claude actually failed, to stop that failure.</p>
+    <table class="rules">
+      <thead><tr><th>Date</th><th>What happened</th><th>Rule added</th></tr></thead>
+      <tbody>
+        <tr><td class="date">08-05</td><td>After compaction, Claude kept working without ever loading its procedure skills. Only CLAUDE.md and the memory index are reloaded automatically</td><td class="fix" data-label="Rule added">A table of must-load items at the very top of CLAUDE.md</td></tr>
+        <tr><td class="date">08-05</td><td>I only reported an experiment result, and Claude built materials for the next stage and wrote "dropped" for an open issue in the ledger</td><td class="fix" data-label="Rule added">Claude gathers material for decisions; I make them. It may recommend, never execute</td></tr>
+        <tr><td class="date">08-06</td><td>Every time an image bug appeared, Claude changed two or three parts of the prompt, and we lost track of what worked</td><td class="fix" data-label="Rule added">Change one thing at a time in experiments, always with a baseline</td></tr>
+        <tr><td class="date">09-26</td><td>While I was away, a crew report never reached the commander. Messages are capped at 10 per session while I am not typing, and the rest were silently dropped</td><td class="fix" data-label="Rule added">No progress updates by message. Long reports go in a file; the message carries only the conclusion and the path</td></tr>
+        <tr><td class="date">09-29</td><td>Crew replies drifted into the commander's voice. They had most likely mistaken the commander's voice rules in the shared CLAUDE.md for their own</td><td class="fix" data-label="Rule added">An entry hook attaches each session's own voice line to every incoming message</td></tr>
+        <tr><td class="date">10-11</td><td>The companion in my chat app could not talk about my recent work. It reads git subjects, and there had been no commits since Sep 16</td><td class="fix" data-label="Rule added">Crew commit with a one-line subject after every task. Oct 11 to 14: 296 commits in 4 days</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="memory">
+    <h2>Memory that survives compaction</h2>
+    <p class="sub">The ledger and the memory files are written by Claude compressing things into one line. What got lost was always lost in that compression.</p>
+    <p>So I wrote a Node.js tool that goes back to the uncompressed transcripts and pulls out what I actually said, each time it is needed. The idea is borrowed from the Just-in-Time Memory paper (<a href="https://arxiv.org/abs/2609.27334">arXiv 2609.27334</a>). Every time I type a message, an entry hook adds the matching ledger lines and up to two of my past messages that match strongly. It takes about one second. When the commander hands work to a crew session, Haiku writes paraphrases to widen the search and picks the matches; that takes about a minute.</p>
+    <p>To measure it, I took 12 past rulings, asked about each one in different wording from the original, and counted how often my original message landed in the top 5.</p>
+    <div class="bars">
+      <div class="bar base"><span class="name">Match ledger tags (old way)</span><div class="track"><div class="fill" style="width:58.3%"></div></div><span class="v">7/12</span></div>
+      <div class="bar"><span class="name">Literal search over transcripts</span><div class="track"><div class="fill" style="width:66.7%"></div></div><span class="v">8/12</span></div>
+      <div class="bar"><span class="name">Both combined (current hook)</span><div class="track"><div class="fill" style="width:83.3%"></div></div><span class="v">10/12</span></div>
+      <div class="bar"><span class="name">Haiku paraphrases and picks</span><div class="track"><div class="fill" style="width:91.7%"></div></div><span class="v">11/12</span></div>
+    </div>
+    <p class="note">Twelve cases is a small set, and Haiku rewrites its paraphrases every run, so results wobble on the same question. The one miss: I had said "no need to limit it," and the question asked about "cutting down the number."</p>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <dl class="about">
+      <dt>Name</dt><dd>basscube1</dd>
+      <dt>School</dt><dd>Ritsumeikan University, College of Science and Engineering, Department of Robotics (Apr 2024 to Mar 2028, expected)</dd>
+      <dt>Building</dt><dd>A solo game and a chat app, and the crew system above that keeps them moving</dd>
+      <dt>Tools</dt><dd>Claude Code, Node.js, Python, Blender (driven from Python), image generation tools</dd>
+      <dt>Contact</dt><dd><a href="https://github.com/gachag960-art">github.com/gachag960-art</a></dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">basscube1 · 2026</div>
+</footer>
+
+</body>
+</html>
